@@ -2,6 +2,8 @@
 
 namespace Dieselnet\Infrastructure\UI\Web\Actions;
 
+use Dieselnet\Application\Commands\CommandBus;
+use Dieselnet\DIKeys;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -26,6 +28,14 @@ abstract class AbstractAction implements ActionInterface
     public function getContainer(): ContainerInterface
     {
         return $this->container;
+    }
+
+    /**
+     * @return CommandBus
+     */
+    public function commandBus(): CommandBus
+    {
+        return $this->getContainer()->get(DIKeys::COMMAND_BUS);
     }
 
     /**
