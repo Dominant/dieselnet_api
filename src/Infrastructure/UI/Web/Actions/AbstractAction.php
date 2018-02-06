@@ -32,6 +32,8 @@ abstract class AbstractAction implements ActionInterface
 
     /**
      * @return CommandBus
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function commandBus(): CommandBus
     {

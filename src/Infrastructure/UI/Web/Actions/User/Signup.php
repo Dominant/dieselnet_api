@@ -11,11 +11,14 @@ use Psr\Http\Message\ResponseInterface;
 class Signup extends AbstractAction
 {
     /**
-     * @param ServerRequestInterface  $request
+     * @param ServerRequestInterface $request
      * @param ResponseInterface $response
      * @param $args
      *
      * @return ResponseInterface
+     *
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $args): ResponseInterface
     {
