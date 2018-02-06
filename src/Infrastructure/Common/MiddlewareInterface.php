@@ -12,7 +12,7 @@ interface MiddlewareInterface
      * @param ResponseInterface $response
      * @param callable          $next
      *
-     * @return mixed
+     * @return ResponseInterface
      */
-    public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next);
+    public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next): ResponseInterface;
 }

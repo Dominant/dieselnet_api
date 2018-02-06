@@ -23,7 +23,8 @@ class JsonResponseMiddlewareTest extends TestCase
         };
         $responseMock->expects($this->once())
             ->method('withHeader')
-            ->with('Content-type', 'application/json');
+            ->with('Content-type', 'application/json')
+            ->willReturnSelf();
 
         // verified by execution
         $classUnderTest = new JsonResponseMiddleware();

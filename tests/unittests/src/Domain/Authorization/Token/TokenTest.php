@@ -14,6 +14,6 @@ class TokenTest extends TestCase
         $tokenString = 'tokenString';
         $classUnderTest = new Token($tokenString);
 
-        $this->assertSame($tokenString, $classUnderTest->getToken());
+        $this->assertSame($tokenString, $classUnderTest->token());
     }
 }

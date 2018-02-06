@@ -20,7 +20,7 @@ class Token
     /**
      * @return string
      */
-    public function getToken(): string
+    public function token(): string
     {
         return $this->token;
     }

@@ -35,7 +35,7 @@ class Middleware implements MiddlewareInterface
      *
      * @return mixed
      */
-    public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next)
+    public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next): ResponseInterface
     {
         $token = $request->getHeaderLine(self::APP_TOKEN_NAME);
         $isValid = $this->verifier->isValid($token);
