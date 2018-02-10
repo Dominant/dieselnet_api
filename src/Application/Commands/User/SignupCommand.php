@@ -2,7 +2,7 @@
 
 namespace Dieselnet\Application\Commands\User;
 
-use Dieselnet\Application\Commands\CommandInterface;
+use Dieselnet\Application\CommandInterface;
 
 class SignupCommand implements CommandInterface
 {

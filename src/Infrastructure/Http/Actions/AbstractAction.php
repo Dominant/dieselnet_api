@@ -1,8 +1,9 @@
 <?php
 
-namespace Dieselnet\Infrastructure\UI\Web\Actions;
+namespace Dieselnet\Infrastructure\Http\Actions;
 
-use Dieselnet\Application\Commands\CommandBus;
+use Dieselnet\Application\CommandBus;
+use Dieselnet\Application\Response\ResponseInterface as HandlerResponseInterface;
 use Dieselnet\DIKeys;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -41,16 +42,17 @@ abstract class AbstractAction implements ActionInterface
     }
 
     /**
-     * @param ResponseInterface $response
-     * @param                   $content
-     * @param bool              $isJson
+     * @param ResponseInterface        $response
+     * @param HandlerResponseInterface $handlerResponse
      *
      * @return ResponseInterface
      */
-    public function writeToResponse(ResponseInterface $response, $content, $isJson = true): ResponseInterface
+    public function jsonResponse(ResponseInterface $response, HandlerResponseInterface $handlerResponse): ResponseInterface
     {
-        $content = $isJson ? json_encode($content) : $content;
-        $response->getBody()->write($content);
+        $response->getBody()->write(json_encode([
+            'success' => $handlerResponse->isSuccess(),
+            'payload' => $handlerResponse->getPayload()
+        ]));
 
         return $response;
     }

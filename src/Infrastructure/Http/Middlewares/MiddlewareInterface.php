@@ -1,6 +1,6 @@
 <?php
 
-namespace Dieselnet\Infrastructure\Common;
+namespace Dieselnet\Infrastructure\Http\Middlewares;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

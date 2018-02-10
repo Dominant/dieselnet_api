@@ -1,18 +1,20 @@
 <?php
 
 use Dieselnet\DIKeys;
-
+use Dieselnet\Application;
+use Dieselnet\Application\Handlers;
 use Dieselnet\Domain\Authorization\Token\Verifier;
-use Dieselnet\Infrastructure\Authorization\Token\Repository;
+use Dieselnet\Infrastructure\Persistance\TokenRepository;
 
 $container = new Slim\Container([
     'settings' => [
-        'determineRouteBeforeAppMiddleware' => true
+        'debug' => true,
+        'determineRouteBeforeAppMiddleware' => true,
     ]
 ]);
 
 $container[DIKeys::TOKEN_REPOSITORY] = function () {
-    return new Repository();
+    return new TokenRepository();
 };
 
 $container[DIKeys::TOKEN_VERIFIER] = function () use ($container) {
@@ -20,14 +22,14 @@ $container[DIKeys::TOKEN_VERIFIER] = function () use ($container) {
 };
 
 $container[DIKeys::COMMAND_BUS] = function () use ($container) {
-    return new \Dieselnet\Application\Commands\CommandBus(
-        new \Dieselnet\Application\Commands\CommandMapper(),
-        $container
-    );
+    return new Application\CommandBus(new Application\CommandMapper(
+        'Dieselnet\\Application\\Commands\\',
+        'Dieselnet\\Application\\Handlers\\'
+    ), $container);
 };
 
-$container[\Dieselnet\Application\Commands\User\SignupHandler::class] = function () {
-    return new \Dieselnet\Application\Commands\User\SignupHandler();
+$container[Handlers\User\SignupHandler::class] = function () {
+    return new Handlers\User\SignupHandler();
 };
 
 return $container;

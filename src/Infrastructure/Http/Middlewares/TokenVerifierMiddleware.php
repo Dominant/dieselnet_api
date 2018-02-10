@@ -1,14 +1,13 @@
 <?php
 
-namespace Dieselnet\Infrastructure\Authorization\Token;
+namespace Dieselnet\Infrastructure\Http\Middlewares;
 
 use Dieselnet\Domain\Authorization\Token\Verifier;
-use Dieselnet\Infrastructure\Common\MiddlewareInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 
-class Middleware implements MiddlewareInterface
+class TokenVerifierMiddleware implements MiddlewareInterface
 {
     const APP_TOKEN_NAME = 'X_DIESELNET_TOKEN';
     const PUBLIC_ALLOWED_ROUTES = [

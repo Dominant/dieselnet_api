@@ -3,6 +3,7 @@
 namespace Dieselnet\Infrastructure\Authorization\Token;
 
 use Dieselnet\Domain\Authorization\Token\Verifier;
+use Dieselnet\Infrastructure\Http\Middlewares\TokenVerifierMiddleware;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -41,7 +42,7 @@ class MiddlewareTest extends TestCase
             ->with($requestMock, $responseMock)
             ->willReturn($responseMock);
 
-        $classUnderTest = new Middleware($verifierMock);
+        $classUnderTest = new TokenVerifierMiddleware($verifierMock);
         $result = $classUnderTest($requestMock, $responseMock, $nextChainCallableMock);
         $this->assertSame($responseMock, $result);
     }
@@ -91,7 +92,7 @@ class MiddlewareTest extends TestCase
         /** @var callable|MockObject $nextChainCallableMock */
         $nextChainCallableMock = $this->createPartialMock(\stdClass::class, ['__invoke']);
 
-        $classUnderTest = new Middleware($verifierMock);
+        $classUnderTest = new TokenVerifierMiddleware($verifierMock);
         $result = $classUnderTest($requestMock, $responseMock, $nextChainCallableMock);
         $this->assertSame($responseMock, $result);
     }
@@ -136,7 +137,7 @@ class MiddlewareTest extends TestCase
         /** @var callable|MockObject $nextChainCallableMock */
         $nextChainCallableMock = $this->createPartialMock(\stdClass::class, ['__invoke']);
 
-        $classUnderTest = new Middleware($verifierMock);
+        $classUnderTest = new TokenVerifierMiddleware($verifierMock);
         $result = $classUnderTest($requestMock, $responseMock, $nextChainCallableMock);
         $this->assertSame($responseMock, $result);
     }

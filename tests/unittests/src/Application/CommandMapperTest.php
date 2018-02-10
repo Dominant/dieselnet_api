@@ -2,17 +2,18 @@
 
 namespace Dieselnet\Application\Commands;
 
+use Dieselnet\Application\CommandMapper;
 use PHPUnit\Framework\TestCase;
 
 class CommandMapperTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \Dieselnet\Application\Commands\NotMappedException
+     * @expectedException \Dieselnet\Application\NotMappedException
      */
     public function notMappedExceptionIsThrown()
     {
-        $classUnderTest = new CommandMapper();
+        $classUnderTest = new CommandMapper('Test', 'Test');
         $classUnderTest->getCommandHandler('Test\\Handler\\Not\\Mapped');
     }
 
@@ -21,7 +22,7 @@ class CommandMapperTest extends TestCase
      */
     public function mappedCommandReturnCorrectHandlerName()
     {
-        $classUnderTest = new CommandMapper();
+        $classUnderTest = new CommandMapper('Test', 'Test');
         $expectedResult = 'Test\\Handler\\MappedHandler';
         $result = $classUnderTest->getCommandHandler('Test\\Handler\\MappedCommand');
 

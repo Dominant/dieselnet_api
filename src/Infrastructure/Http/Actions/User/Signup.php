@@ -1,10 +1,10 @@
 <?php
 
-namespace Dieselnet\Infrastructure\UI\Web\Actions\User;
+namespace Dieselnet\Infrastructure\Http\Actions\User;
 
 use Dieselnet\Application\Commands\User\SignupCommand;
-use Dieselnet\Application\Commands\User\SignupHandler;
-use Dieselnet\Infrastructure\UI\Web\Actions\AbstractAction;
+use Dieselnet\Application\Handlers\User\SignupHandler;
+use Dieselnet\Infrastructure\Http\Actions\AbstractAction;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -25,10 +25,8 @@ class Signup extends AbstractAction
         $command = new SignupCommand('', '');
         /** @var SignupHandler $handler */
         $handler = $this->commandBus()->getHandler($command);
-        $handler->handle($command);
+        $handlerResponse = $handler->handle($command);
 
-        return $this->writeToResponse($response, [
-            'test' => true
-        ]);
+        return $this->jsonResponse($response, $handlerResponse);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dieselnet\Application\Commands;
+namespace Dieselnet\Application;
 
 use InvalidArgumentException;
 

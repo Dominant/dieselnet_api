@@ -2,6 +2,7 @@
 
 namespace Dieselnet\Infrastructure\Common;
 
+use Dieselnet\Infrastructure\Http\Middlewares\JsonResponseMiddleware;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;

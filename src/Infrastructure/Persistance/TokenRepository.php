@@ -1,11 +1,11 @@
 <?php
 
-namespace Dieselnet\Infrastructure\Authorization\Token;
+namespace Dieselnet\Infrastructure\Persistance;
 
 use Dieselnet\Domain\Authorization\Token\RepositoryInterface;
 use Dieselnet\Domain\Authorization\Token\Token;
 
-class Repository implements RepositoryInterface
+class TokenRepository implements RepositoryInterface
 {
     /**
      * @param string $token
