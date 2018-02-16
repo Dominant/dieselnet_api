@@ -29,8 +29,8 @@ class CommandBus
 
     /**
      * @param CommandInterface $command
-     *
      * @return void
+     * @throws \Psr\Container\ContainerExceptionInterface
      */
     public function handle(CommandInterface $command): void
     {
@@ -39,8 +39,8 @@ class CommandBus
 
     /**
      * @param CommandInterface $command
-     *
      * @return CommandHandlerInterface
+     * @throws \Psr\Container\ContainerExceptionInterface
      */
     public function getHandler(CommandInterface $command): CommandHandlerInterface
     {

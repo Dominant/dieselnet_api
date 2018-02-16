@@ -7,7 +7,7 @@ use Dieselnet\Infrastructure\Authorization;
 use Dieselnet\Infrastructure\Http\Middlewares\JsonRequestMiddleware;
 use Dieselnet\Infrastructure\Http\Middlewares\JsonResponseMiddleware;
 use Dieselnet\Infrastructure\Http\Middlewares\TokenVerifierMiddleware;
-use \Dieselnet\Infrastructure\Http\Actions as WebActions;
+use Dieselnet\Infrastructure\Http\Actions as WebActions;
 
 $app = new Slim\App($container);
 $app->add(new TokenVerifierMiddleware($container->get(DIKeys::TOKEN_VERIFIER)));
