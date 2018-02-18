@@ -12,7 +12,7 @@ class TokenRepository implements RepositoryInterface
      *
      * @return Token|null
      */
-    public function getByToken(string $token): ? Token
+    public function getByToken(string $token): ?Token
     {
         return null;
     }

@@ -17,7 +17,9 @@ class SignupHandler implements CommandHandlerInterface
     public function handle(SignupCommand $command): ResponseInterface
     {
         return new Success([
-            'test' => true
+            'command' => get_class($command),
+            'phone' => $command->getPhoneNumber(),
+            'deviceId' => $command->getDeviceId()
         ]);
     }
 }
