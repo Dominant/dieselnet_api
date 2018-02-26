@@ -8,7 +8,7 @@ use Dieselnet\DIKeys;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 
-abstract class AbstractAction implements ActionInterface
+abstract class AbstractAction
 {
     /**
      * @var ContainerInterface
@@ -38,7 +38,7 @@ abstract class AbstractAction implements ActionInterface
      */
     public function commandBus(): CommandBus
     {
-        return $this->getContainer()->get(DIKeys::COMMAND_BUS);
+        return $this->getContainer()->get(CommandBus::class);
     }
 
     /**

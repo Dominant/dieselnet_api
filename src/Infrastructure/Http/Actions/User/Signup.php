@@ -13,14 +13,13 @@ class Signup extends AbstractAction
     /**
      * @param ServerRequestInterface $request
      * @param ResponseInterface $response
-     * @param $args
      *
      * @return ResponseInterface
      *
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $args): ResponseInterface
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $command = new SignupCommand('', '');
         /** @var SignupHandler $handler */
