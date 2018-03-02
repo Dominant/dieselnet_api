@@ -4,7 +4,6 @@ namespace Dieselnet\Infrastructure\Http\Actions;
 
 use Dieselnet\Application\CommandBus;
 use Dieselnet\Application\Response\ResponseInterface as HandlerResponseInterface;
-use Dieselnet\DIKeys;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -49,6 +48,7 @@ abstract class AbstractAction
      */
     public function jsonResponse(ResponseInterface $response, HandlerResponseInterface $handlerResponse): ResponseInterface
     {
+        $response = $response->withStatus($handlerResponse->httpCode());
         $response->getBody()->write(json_encode([
             'success' => $handlerResponse->isSuccess(),
             'payload' => $handlerResponse->getPayload()

@@ -28,7 +28,7 @@ class Verifier
             return false;
         }
 
-        $token = $this->repository->getByToken($token);
+        $token = $this->repository->fetch($token);
         $isValid = !is_null($token);
 
         return $isValid;

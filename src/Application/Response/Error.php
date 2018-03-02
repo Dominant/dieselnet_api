@@ -5,6 +5,15 @@ namespace Dieselnet\Application\Response;
 class Error extends AbstractResponse
 {
     /**
+     * @param int $httpCode
+     * @param array $payload
+     */
+    public function __construct(int $httpCode = 400, array $payload = [])
+    {
+        parent::__construct($httpCode, $payload);
+    }
+
+    /**
      * Identify if response is successful.
      *
      * @return bool

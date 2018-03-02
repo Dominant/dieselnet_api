@@ -10,11 +10,18 @@ abstract class AbstractResponse implements ResponseInterface
     private $payload;
 
     /**
+     * @var int
+     */
+    private $httpCode;
+
+    /**
+     * @param int $httpCode
      * @param array $payload
      */
-    public function __construct(array $payload = [])
+    public function __construct(int $httpCode, array $payload = [])
     {
         $this->payload = $payload;
+        $this->httpCode = $httpCode;
     }
 
     /**
@@ -23,5 +30,13 @@ abstract class AbstractResponse implements ResponseInterface
     public function getPayload(): array
     {
         return $this->payload;
+    }
+
+    /**
+     * @return int
+     */
+    public function httpCode(): int
+    {
+        return $this->httpCode;
     }
 }

@@ -24,4 +24,9 @@ interface ResponseInterface
      * @return array
      */
     public function getPayload(): array;
+
+    /**
+     * @return int
+     */
+    public function httpCode(): int;
 }
