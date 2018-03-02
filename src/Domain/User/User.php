@@ -52,4 +52,12 @@ class User
             throw new InvalidVerificationCodeException();
         }
     }
+
+    /**
+     * @return VerificationCode
+     */
+    public function verificationCode(): VerificationCode
+    {
+        return $this->verificationCode;
+    }
 }

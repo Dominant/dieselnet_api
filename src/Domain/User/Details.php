@@ -16,4 +16,12 @@ class Details
     {
         $this->phone = $phone;
     }
+
+    /**
+     * @return string
+     */
+    public function phone(): string
+    {
+        return $this->phone;
+    }
 }
