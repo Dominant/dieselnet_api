@@ -7,6 +7,7 @@ use Dieselnet\Infrastructure\Events\SymfonyEventDispatcherAdapter;
 use Dieselnet\Infrastructure\Persistance;
 use Dieselnet\Application;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 return [
     Psr\Container\ContainerInterface::class => DI\autowire(DI\Container::class),
@@ -17,5 +18,9 @@ return [
     CommandMapper::class => DI\create(CommandMapper::class)->constructor(
         'Dieselnet\\Application\\Commands\\',
         'Dieselnet\\Application\\Handlers\\'
+    ),
+
+    AMQPStreamConnection::class => DI\create(AMQPStreamConnection::class)->constructor(
+        'localhost', 5672, 'guest', 'guest'
     )
 ];
