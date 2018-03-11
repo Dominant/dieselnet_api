@@ -2,6 +2,8 @@
 
 namespace Dieselnet\Domain\User;
 
+use Dieselnet\Domain\Assert;
+
 class Details
 {
     /**
@@ -10,11 +12,23 @@ class Details
     private $phone;
 
     /**
-     * @param string $phone
+     * @var string
      */
-    public function __construct(string $phone)
-    {
+    private $deviceId;
+
+    /**
+     * @param string $phone
+     * @param string $deviceId
+     */
+    public function __construct(
+        string $phone,
+        string $deviceId
+    ) {
+        Assert::notEmpty($phone);
+        Assert::notEmpty($deviceId);
+
         $this->phone = $phone;
+        $this->deviceId = $deviceId;
     }
 
     /**
@@ -23,5 +37,13 @@ class Details
     public function phone(): string
     {
         return $this->phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function deviceId(): string
+    {
+        return $this->deviceId;
     }
 }

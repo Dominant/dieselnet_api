@@ -2,8 +2,15 @@
 
 namespace Dieselnet\Domain\User;
 
+use Dieselnet\Domain\Common\AggregateId;
+
 class User
 {
+    /**
+     * @var AggregateId
+     */
+    private $id;
+
     /**
      * @var Details
      */
@@ -20,15 +27,18 @@ class User
     private $verificationCode;
 
     /**
+     * @param AggregateId $id
      * @param Details $details
      * @param bool $isVerified
      * @param VerificationCode $verificationCode
      */
     public function __construct(
+        AggregateId $id,
         Details $details,
         bool $isVerified,
         VerificationCode $verificationCode
     ) {
+        $this->id = $id;
         $this->details = $details;
         $this->isVerified = $isVerified;
         $this->verificationCode = $verificationCode;

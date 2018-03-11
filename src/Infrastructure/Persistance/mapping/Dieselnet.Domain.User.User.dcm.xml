@@ -1,0 +1,14 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+    <entity name="Dieselnet\Domain\User\User" table="accounts">
+        <id name="id" type="AggregateId" column="id">
+            <generator strategy="NONE" />
+        </id>
+
+        <field name="isVerified" column="is_verified" type="boolean" length="1" />
+        <embedded name="details" class="Dieselnet\Domain\User\Details" use-column-prefix="false" />
+        <embedded name="verificationCode" class="Dieselnet\Domain\User\VerificationCode" use-column-prefix="false" />
+    </entity>
+</doctrine-mapping>

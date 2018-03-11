@@ -21,7 +21,8 @@ class Signup extends AbstractAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $command = new SignupCommand('', '');
+        $params = $request->getParsedBody();
+        $command = new SignupCommand($params['phone'], $params['deviceId']);
         /** @var SignupHandler $handler */
         $handler = $this->commandBus()->getHandler($command);
         $handlerResponse = $handler->handle($command);

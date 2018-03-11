@@ -9,4 +9,10 @@ interface RepositoryInterface
      * @return bool
      */
     public function save(User $user): bool;
+
+    /**
+     * @param string $phone
+     * @return bool
+     */
+    public function phoneAlreadyUsed(string $phone): bool;
 }

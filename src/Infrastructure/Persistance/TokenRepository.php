@@ -5,7 +5,7 @@ namespace Dieselnet\Infrastructure\Persistance;
 use Dieselnet\Domain\Authorization\Token\RepositoryInterface;
 use Dieselnet\Domain\Authorization\Token\Token;
 
-class TokenRepository implements RepositoryInterface
+class TokenRepository extends AbstractRepository implements RepositoryInterface
 {
     /**
      * @param string $token

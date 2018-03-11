@@ -5,14 +5,14 @@ namespace Dieselnet\Domain\User;
 class VerificationCode
 {
     /**
-     * @var string
+     * @var int
      */
     private $code;
 
     /**
-     * @param string $code
+     * @param int $code
      */
-    public function __construct(string $code)
+    public function __construct(int $code)
     {
         $this->code = $code;
     }
@@ -22,16 +22,7 @@ class VerificationCode
      */
     public static function generate(): self
     {
-        $code = (string) rand(1000, 9999);
-        return new self($code);
-    }
-
-    /**
-     * @param string $code
-     * @return VerificationCode
-     */
-    public static function fromString(string $code): self
-    {
+        $code = rand(1000, 9999);
         return new self($code);
     }
 

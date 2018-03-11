@@ -3,3 +3,10 @@ rabbitmq:
   port: '5672'
   user: 'guest'
   pass: 'guest'
+database:
+  host: 'localhost'
+  port: '3306'
+  user: 'root'
+  pass: ''
+  dbname: 'dieselnet_api'
+  driver: 'pdo_mysql'

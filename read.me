@@ -1,0 +1,6 @@
+Generate migration:
+
+./bin/doctrine-migrations migrations:generate --configuration migrations/migrations.xml --db-configuration migrations/connection.php
+
+Run migration
+./bin/doctrine-migrations migrations:migrate --configuration migrations/migrations.xml --db-configuration migrations/connection.php
