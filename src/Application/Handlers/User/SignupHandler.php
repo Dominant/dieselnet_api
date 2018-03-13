@@ -47,18 +47,19 @@ class SignupHandler implements CommandHandlerInterface
     public function handle(SignupCommand $command): ResponseInterface
     {
         try {
-            $phoneAlreadyUsed = $this->repository->phoneAlreadyUsed($command->getPhoneNumber());
+            $user = $this->repository->findByPhone($command->getPhoneNumber());
 
-            if ($phoneAlreadyUsed) {
-                return new Error(400, ['Bad request.']);
+            if (is_null($user)) {
+                $user = new User(
+                    AggregateId::generate(),
+                    new Details($command->getPhoneNumber(), $command->getDeviceId()),
+                    false,
+                    VerificationCode::generate()
+                );
+            } else {
+                $user->changeDetails(new Details($command->getPhoneNumber(), $command->getDeviceId()));
+                $user->changeVerificationCode(VerificationCode::generate());
             }
-
-            $user = new User(
-                AggregateId::generate(),
-                new Details($command->getPhoneNumber(), $command->getDeviceId()),
-                false,
-                VerificationCode::generate()
-            );
 
             if ($this->repository->save($user)) {
                 $response = new Success();

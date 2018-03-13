@@ -70,4 +70,20 @@ class User
     {
         return $this->verificationCode;
     }
+
+    /**
+     * @param Details $details
+     */
+    public function changeDetails(Details $details)
+    {
+        $this->details = $details;
+    }
+
+    /**
+     * @param VerificationCode $verificationCode
+     */
+    public function changeVerificationCode(VerificationCode $verificationCode)
+    {
+        $this->verificationCode = $verificationCode;
+    }
 }

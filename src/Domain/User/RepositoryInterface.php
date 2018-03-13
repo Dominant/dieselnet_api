@@ -15,4 +15,10 @@ interface RepositoryInterface
      * @return bool
      */
     public function phoneAlreadyUsed(string $phone): bool;
+
+    /**
+     * @param string $phone
+     * @return User|null
+     */
+    public function findByPhone(string $phone): ?User;
 }

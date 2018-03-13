@@ -41,4 +41,18 @@ class UserRepository extends AbstractRepository implements RepositoryInterface
 
         return !is_null($user);
     }
+
+    /**
+     * @param string $phone
+     * @return User|null
+     */
+    public function findByPhone(string $phone): ?User
+    {
+        /** @var User|\null $user */
+        $user = $this->repository()->findOneBy([
+            'details.phone' => $phone
+        ]);
+
+        return $user;
+    }
 }
