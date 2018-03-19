@@ -15,7 +15,6 @@ use Dieselnet\Domain\User\Details;
 use Dieselnet\Domain\User\RepositoryInterface;
 use Dieselnet\Domain\User\User;
 use Dieselnet\Domain\User\VerificationCode;
-use Ramsey\Uuid\Uuid;
 
 class SignupHandler implements CommandHandlerInterface
 {

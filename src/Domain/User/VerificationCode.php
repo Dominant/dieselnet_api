@@ -32,7 +32,7 @@ class VerificationCode
      */
     public function assertSame(VerificationCode $verificationCode): bool
     {
-        return assert($this->code, (string) $verificationCode);
+        return (string) $this->code === (string) $verificationCode;
     }
 
     /**

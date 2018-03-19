@@ -11,7 +11,8 @@ class TokenVerifierMiddleware implements MiddlewareInterface
 {
     const APP_TOKEN_NAME = 'X_DIESELNET_TOKEN';
     const PUBLIC_ALLOWED_ROUTES = [
-        'signup'
+        'signup',
+        'verify-code',
     ];
 
     /**

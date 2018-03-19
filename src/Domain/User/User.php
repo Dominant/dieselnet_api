@@ -61,6 +61,8 @@ class User
         if (!$this->verificationCode->assertSame($verificationCode)) {
             throw new InvalidVerificationCodeException();
         }
+
+        $this->isVerified = true;
     }
 
     /**
