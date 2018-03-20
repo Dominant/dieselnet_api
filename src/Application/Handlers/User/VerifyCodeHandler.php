@@ -7,6 +7,7 @@ use Dieselnet\Application\Commands\User\VerifyCodeCommand;
 use Dieselnet\Application\Response\Error;
 use Dieselnet\Application\Response\ResponseInterface;
 use Dieselnet\Application\Response\Success;
+use Dieselnet\Domain\Authorization\Token;
 use Dieselnet\Domain\DomainException;
 use Dieselnet\Domain\User\InvalidVerificationCodeException;
 use Dieselnet\Domain\User\RepositoryInterface;
@@ -20,11 +21,18 @@ class VerifyCodeHandler implements CommandHandlerInterface
     private $repository;
 
     /**
-     * @param RepositoryInterface $repository
+     * @var Token\RepositoryInterface
      */
-    public function __construct(RepositoryInterface $repository)
+    private $tokenRepository;
+
+    /**
+     * @param RepositoryInterface $repository
+     * @param Token\RepositoryInterface $tokenRepository
+     */
+    public function __construct(RepositoryInterface $repository, Token\RepositoryInterface $tokenRepository)
     {
         $this->repository = $repository;
+        $this->tokenRepository = $tokenRepository;
     }
 
     /**
@@ -41,8 +49,15 @@ class VerifyCodeHandler implements CommandHandlerInterface
                 $response = new Error(400, ['bad request.']);
             } else {
                 $user->verifyCode(new VerificationCode($command->getCode()));
-                $response = new Success();
+                $token = Token\Token::generateFor($user->getId());
+
                 $this->repository->save($user);
+                $this->tokenRepository->save($token);
+
+                $response = new Success(200, [
+                    'token' => (string) $token,
+                    'reference' => (string) $user->getId()
+                ]);
             }
 
         } catch (DomainException | InvalidVerificationCodeException $exception) {

@@ -4,7 +4,6 @@ namespace Dieselnet\Infrastructure\Persistance;
 
 use Dieselnet\Domain\User\RepositoryInterface;
 use Dieselnet\Domain\User\User;
-use Doctrine\ORM\ORMException;
 
 class UserRepository extends AbstractRepository implements RepositoryInterface
 {
@@ -19,14 +18,7 @@ class UserRepository extends AbstractRepository implements RepositoryInterface
      */
     public function save(User $user): bool
     {
-        try {
-            $this->em()->persist($user);
-            $this->em()->flush();
-        } catch (ORMException $e) {
-            return false;
-        }
-
-        return true;
+        return $this->store($user);
     }
 
     /**

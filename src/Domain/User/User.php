@@ -88,4 +88,12 @@ class User
     {
         $this->verificationCode = $verificationCode;
     }
+
+    /**
+     * @return AggregateId
+     */
+    public function getId(): AggregateId
+    {
+        return $this->id;
+    }
 }

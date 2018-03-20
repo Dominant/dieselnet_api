@@ -4,5 +4,15 @@ namespace Dieselnet\Domain\Authorization\Token;
 
 interface RepositoryInterface
 {
-    public function fetch(string $token): ?Token;
+    /**
+     * @param string $token
+     * @return Token|null
+     */
+    public function find(string $token): ?Token;
+
+    /**
+     * @param Token $token
+     * @return bool
+     */
+    public function save(Token $token): bool;
 }

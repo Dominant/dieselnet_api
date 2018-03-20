@@ -17,12 +17,12 @@ class AggregateId extends Type
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return (string) $value;
+        return \Dieselnet\Domain\Common\AggregateId::fromString((string) $value);
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        return \Dieselnet\Domain\Common\AggregateId::fromString((string) $value);
+        return (string) $value;
     }
 
     public function getName()

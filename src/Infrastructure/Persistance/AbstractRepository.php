@@ -3,6 +3,7 @@
 namespace Dieselnet\Infrastructure\Persistance;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMException;
 
 abstract class AbstractRepository
 {
@@ -33,5 +34,21 @@ abstract class AbstractRepository
     public function repository()
     {
         return $this->em()->getRepository($this->entityRepositoryClass);
+    }
+
+    /**
+     * @param $object
+     * @return bool
+     */
+    protected function store($object): bool
+    {
+        try {
+            $this->em()->persist($object);
+            $this->em()->flush();
+        } catch (ORMException $e) {
+            return false;
+        }
+
+        return true;
     }
 }
