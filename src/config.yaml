@@ -1,12 +1,12 @@
 rabbitmq:
-  host: 'localhost'
+  host: 'rabbitmq'
   port: '5672'
   user: 'guest'
   pass: 'guest'
 database:
-  host: 'localhost'
+  host: 'env(DB_HOST)'
   port: '3306'
-  user: 'root'
-  pass: ''
+  user: 'env(DB_USER)'
+  pass: 'env(DB_PASS)'
   dbname: 'dieselnet_api'
   driver: 'pdo_mysql'

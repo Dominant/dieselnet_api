@@ -4,14 +4,15 @@ $autoloadFile = realpath(__DIR__ . '/../vendor/autoload.php');
 require_once $autoloadFile;
 
 $configFile = realpath(__DIR__ . '/../src/config.yaml');
-$config = \Symfony\Component\Yaml\Yaml::parseFile($configFile);
+$data = \Symfony\Component\Yaml\Yaml::parseFile($configFile);
+$config = new \Dieselnet\Infrastructure\Config\Config($data);
 
 return [
-    'driver' => $config['database']['driver'],
-    'host' => $config['database']['host'],
-    'port' => $config['database']['port'],
-    'dbname' => $config['database']['dbname'],
-    'user' => $config['database']['user'],
-    'password' => $config['database']['pass'],
-    'charset' => 'UTF8',
+    'driver' => $config->get('database')['driver'],
+    'host' => $config->get('database')['host'],
+    'port' => $config->get('database')['port'],
+    'dbname' => $config->get('database')['dbname'],
+    'user' => $config->get('database')['user'],
+    'password' => $config->get('database')['pass'],
+    'charset' => 'UTF8'
 ];

@@ -29,7 +29,7 @@ class VerifierTest extends TestCase
         /** @var RepositoryInterface|MockObject $repositoryMock */
         $repositoryMock = $this->createMock(RepositoryInterface::class);
         $repositoryMock->expects($this->once())
-            ->method('fetch')
+            ->method('find')
             ->with($token)
             ->willReturn(null);
         $classUnderTest = new Verifier($repositoryMock);
@@ -47,7 +47,7 @@ class VerifierTest extends TestCase
         /** @var RepositoryInterface|MockObject $repositoryMock */
         $repositoryMock = $this->createMock(RepositoryInterface::class);
         $repositoryMock->expects($this->once())
-            ->method('fetch')
+            ->method('find')
             ->with($tokenString)
             ->willReturn($token);
         $classUnderTest = new Verifier($repositoryMock);

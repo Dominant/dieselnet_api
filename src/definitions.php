@@ -56,6 +56,7 @@ return [
             'host' => $config->get('database')['host'],
             'driver' => 'pdo_mysql',
         );
+
         $connection = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $xmlConfig);
         \Doctrine\DBAL\Types\Type::addType(Persistance\Types\AggregateId::NAME, Persistance\Types\AggregateId::class);
 

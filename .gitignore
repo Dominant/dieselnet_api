@@ -1,3 +1,7 @@
 vendor/*
 bin/
 tmp/
+dieselnet_sms_service/
+.DS_Store
+.idea/
+tests/.DS_Store
