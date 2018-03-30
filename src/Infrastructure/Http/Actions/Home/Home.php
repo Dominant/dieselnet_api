@@ -2,6 +2,7 @@
 
 namespace Dieselnet\Infrastructure\Http\Actions\Home;
 
+use Dieselnet\Application\Response\Success;
 use Dieselnet\Infrastructure\Http\Actions\AbstractAction;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,7 +16,6 @@ class Home extends AbstractAction
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $response->getBody()->write('home');
-        return $response;
+        return $this->jsonResponse($response, new Success());
     }
 }
