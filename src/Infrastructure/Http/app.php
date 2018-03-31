@@ -3,6 +3,7 @@
 use DI\ContainerBuilder;
 use Dieselnet\Domain\Authorization\Token\Verifier as TokenVerifier;
 use Dieselnet\Infrastructure\Authorization;
+use Dieselnet\Infrastructure\Http\Middlewares\CorsResponseMiddleware;
 use Dieselnet\Infrastructure\Http\Middlewares\JsonRequestMiddleware;
 use Dieselnet\Infrastructure\Http\Middlewares\JsonResponseMiddleware;
 use Dieselnet\Infrastructure\Http\Middlewares\TokenVerifierMiddleware;
@@ -35,6 +36,7 @@ $container = $app->getContainer();
 $app->add(new TokenVerifierMiddleware($container->get(TokenVerifier::class)));
 $app->add(new JsonRequestMiddleware());
 $app->add(new JsonResponseMiddleware());
+$app->add(new CorsResponseMiddleware());
 
 require_once PROJECT_ROOT . '/src/eventhandlers.php';
 require_once PROJECT_ROOT . '/src/routes.php';

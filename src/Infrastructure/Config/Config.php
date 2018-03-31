@@ -2,6 +2,8 @@
 
 namespace Dieselnet\Infrastructure\Config;
 
+use Exception;
+
 class Config
 {
     /**
