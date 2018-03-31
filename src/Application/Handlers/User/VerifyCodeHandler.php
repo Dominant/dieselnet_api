@@ -61,7 +61,7 @@ class VerifyCodeHandler implements CommandHandlerInterface
             }
 
         } catch (DomainException | InvalidVerificationCodeException $exception) {
-            $response = new Error(400, ['bad request']);
+            $response = new Error(400, ['wrong code']);
         }
 
         return $response;
