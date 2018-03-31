@@ -13,6 +13,7 @@ class TokenVerifierMiddleware implements MiddlewareInterface
     const PUBLIC_ALLOWED_ROUTES = [
         'signup',
         'verify-code',
+        'options-check'
     ];
 
     /**
