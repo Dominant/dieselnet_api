@@ -18,6 +18,10 @@ class JsonRequestMiddleware implements MiddlewareInterface
     {
         $contentType = $request->getHeaderLine('Content-type');
 
+        if ($this->isCorsPreflightRequest($request)) {
+            return $next($request, $response);
+        }
+
         if (!preg_match('/^application\\/json/', $contentType)) {
             $response = $response->withStatus(400);
             $response->getBody()->write(json_encode([
@@ -28,5 +32,11 @@ class JsonRequestMiddleware implements MiddlewareInterface
         }
 
         return $next($request, $response);
+    }
+
+    protected function isCorsPreflightRequest($request): bool
+    {
+        $method = strtoupper($request->getMethod());
+        return $method === 'OPTIONS';
     }
 }
