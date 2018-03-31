@@ -34,7 +34,12 @@ class JsonRequestMiddleware implements MiddlewareInterface
         return $next($request, $response);
     }
 
-    protected function isCorsPreflightRequest($request): bool
+    /**
+     * @param RequestInterface $request
+     *
+     * @return bool
+     */
+    protected function isCorsPreflightRequest(RequestInterface $request): bool
     {
         $method = strtoupper($request->getMethod());
         return $method === 'OPTIONS';
