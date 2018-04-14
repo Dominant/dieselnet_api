@@ -16,5 +16,7 @@ $app->delete('/user/{reference}/wishlist', WebActions\User\DeleteWishlist::class
 # CORS HEADER SUPPORT
 $app->options('/[{path:.*}]', function(ServerRequestInterface $request, ResponseInterface $response) {
     $response = $response->withHeader('Access-Control-Allow-Headers', 'X-Dieselnet-token, Content-Type');
+    $response = $response->withHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+
     return $response->withStatus(200);
 })->setName('options-check');
