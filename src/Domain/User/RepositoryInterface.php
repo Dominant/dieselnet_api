@@ -2,6 +2,8 @@
 
 namespace Dieselnet\Domain\User;
 
+use Dieselnet\Domain\Kernel\AggregateId;
+
 interface RepositoryInterface
 {
     /**
@@ -12,13 +14,14 @@ interface RepositoryInterface
 
     /**
      * @param string $phone
-     * @return bool
-     */
-    public function phoneAlreadyUsed(string $phone): bool;
-
-    /**
-     * @param string $phone
      * @return User|null
      */
     public function findByPhone(string $phone): ?User;
+
+    /**
+     * @param AggregateId $userId
+     *
+     * @return User|null
+     */
+    public function find(AggregateId $userId): ?User;
 }

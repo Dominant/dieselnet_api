@@ -2,7 +2,7 @@
 
 namespace Dieselnet\Domain\User\Events;
 
-use Dieselnet\Domain\Common\DomainEventInterface;
+use Dieselnet\Domain\Kernel\DomainEventInterface;
 use Dieselnet\Domain\User\User;
 
 class UserSignupEvent implements DomainEventInterface

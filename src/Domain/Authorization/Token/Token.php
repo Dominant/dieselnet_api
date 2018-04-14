@@ -2,7 +2,7 @@
 
 namespace Dieselnet\Domain\Authorization\Token;
 
-use Dieselnet\Domain\Common\AggregateId;
+use Dieselnet\Domain\Kernel\AggregateId;
 
 class Token
 {

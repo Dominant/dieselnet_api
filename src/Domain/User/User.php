@@ -2,7 +2,8 @@
 
 namespace Dieselnet\Domain\User;
 
-use Dieselnet\Domain\Common\AggregateId;
+use Dieselnet\Domain\Kernel\AggregateId;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class User
 {
@@ -27,6 +28,11 @@ class User
     private $verificationCode;
 
     /**
+     * @var ArrayCollection|Machine[]
+     */
+    private $wishlist;
+
+    /**
      * @param AggregateId $id
      * @param Details $details
      * @param bool $isVerified
@@ -42,6 +48,7 @@ class User
         $this->details = $details;
         $this->isVerified = $isVerified;
         $this->verificationCode = $verificationCode;
+        $this->wishlist = new ArrayCollection();
     }
 
     /**
@@ -95,5 +102,55 @@ class User
     public function getId(): AggregateId
     {
         return $this->id;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function wishlist()
+    {
+        return $this->wishlist;
+    }
+
+    /**
+     * @param Machine $machine
+     */
+    public function addMachineToWishlist(Machine $machine)
+    {
+        if (!$this->isMachineInWishlist($machine)) {
+            $this->wishlist[] = $machine;
+        }
+    }
+
+    /**
+     * @param Machine $machine
+     *
+     * @return bool
+     */
+    public function isMachineInWishlist(Machine $machine): bool
+    {
+        $inWishlist = false;
+
+        foreach ($this->wishlist as $machineInWishlist) {
+            if ($machineInWishlist->equals($machine)) {
+                $inWishlist = true;
+                break;
+            }
+        }
+
+        return $inWishlist;
+    }
+
+    /**
+     * @param Machine $machine
+     */
+    public function removeMachineFromWishlist(Machine $machine)
+    {
+        foreach ($this->wishlist as $index => $machineInWishlist) {
+            if ($machineInWishlist->equals($machine)) {
+                $this->wishlist->remove($machineInWishlist);
+                $machineInWishlist->detachFromUser();
+            }
+        }
     }
 }

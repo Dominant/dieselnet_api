@@ -13,12 +13,12 @@ class Version20180320135004 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
-        $accounts = $schema->createTable('tokens');
-        $accounts->addColumn('reference', Type::STRING, ['length' => 36]);
-        $accounts->addColumn('token', Type::STRING, ['length' => 64]);
+        $tokens = $schema->createTable('tokens');
+        $tokens->addColumn('reference', Type::STRING, ['length' => 36]);
+        $tokens->addColumn('token', Type::STRING, ['length' => 64]);
 
-        $accounts->addForeignKeyConstraint('accounts', ['reference'], ['id']);
-        $accounts->setPrimaryKey(['token']);
+        $tokens->addForeignKeyConstraint('accounts', ['reference'], ['id']);
+        $tokens->setPrimaryKey(['token']);
     }
 
     public function down(Schema $schema)

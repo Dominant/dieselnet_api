@@ -10,5 +10,11 @@
         <field name="isVerified" column="is_verified" type="boolean" length="1" />
         <embedded name="details" class="Dieselnet\Domain\User\Details" use-column-prefix="false" />
         <embedded name="verificationCode" class="Dieselnet\Domain\User\VerificationCode" use-column-prefix="false" />
+
+        <one-to-many field="wishlist" mapped-by="user" target-entity="Dieselnet\Domain\User\Machine" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
     </entity>
 </doctrine-mapping>

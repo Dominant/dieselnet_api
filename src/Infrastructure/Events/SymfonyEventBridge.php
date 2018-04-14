@@ -2,7 +2,7 @@
 
 namespace Dieselnet\Infrastructure\Events;
 
-use Dieselnet\Domain\Common\DomainEventInterface;
+use Dieselnet\Domain\Kernel\DomainEventInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 class SymfonyEventBridge extends Event

@@ -5,7 +5,7 @@ namespace Dieselnet\Application\Handlers\User;
 use Dieselnet\Application\CommandHandlerInterface;
 use Dieselnet\Application\Commands\User\SignupCommand;
 use Dieselnet\Application\EventDispatcherInterface;
-use Dieselnet\Domain\Common\AggregateId;
+use Dieselnet\Domain\Kernel\AggregateId;
 use Dieselnet\Domain\DomainException;
 use Dieselnet\Domain\User\Events\UserSignupEvent;
 use Dieselnet\Application\Response\Error;

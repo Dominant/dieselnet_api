@@ -2,7 +2,6 @@
 
 namespace Dieselnet\Infrastructure\Persistance\Types;
 
-use function DI\string;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
@@ -17,7 +16,7 @@ class AggregateId extends Type
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return \Dieselnet\Domain\Common\AggregateId::fromString((string) $value);
+        return \Dieselnet\Domain\Kernel\AggregateId::fromString((string) $value);
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)

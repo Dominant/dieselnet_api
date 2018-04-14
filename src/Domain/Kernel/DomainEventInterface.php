@@ -1,6 +1,6 @@
 <?php
 
-namespace Dieselnet\Domain\Common;
+namespace Dieselnet\Domain\Kernel;
 
 interface DomainEventInterface
 {

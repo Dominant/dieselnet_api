@@ -2,7 +2,7 @@
 
 namespace Dieselnet\Application;
 
-use Dieselnet\Domain\Common\DomainEventInterface;
+use Dieselnet\Domain\Kernel\DomainEventInterface;
 
 interface EventDispatcherInterface
 {

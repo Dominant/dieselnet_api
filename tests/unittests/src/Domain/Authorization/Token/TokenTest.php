@@ -3,7 +3,7 @@
 namespace Dieselnet\Domain\Authorization\Token;
 
 use PHPUnit\Framework\TestCase;
-use Dieselnet\Domain\Common\AggregateId;
+use Dieselnet\Domain\Kernel\AggregateId;
 
 class TokenTest extends TestCase
 {

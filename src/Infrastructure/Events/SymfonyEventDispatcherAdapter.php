@@ -3,7 +3,7 @@
 namespace Dieselnet\Infrastructure\Events;
 
 use Dieselnet\Application\EventDispatcherInterface;
-use Dieselnet\Domain\Common\DomainEventInterface;
+use Dieselnet\Domain\Kernel\DomainEventInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 

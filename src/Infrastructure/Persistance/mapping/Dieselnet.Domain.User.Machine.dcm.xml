@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+    <entity name="Dieselnet\Domain\User\Machine" table="machines">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="machineId" column="machine_id" type="integer"/>
+        <many-to-one field="user" mapped-by="reference" inversed-by="wishlist" target-entity="Dieselnet\Domain\User\User">
+            <join-column name="reference" referenced-column-name="id" on-delete="DELETE"/>
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

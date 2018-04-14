@@ -2,6 +2,7 @@
 
 namespace Dieselnet\Infrastructure\Persistance;
 
+use Dieselnet\Domain\Kernel\AggregateId;
 use Dieselnet\Domain\User\RepositoryInterface;
 use Dieselnet\Domain\User\User;
 
@@ -14,6 +15,7 @@ class UserRepository extends AbstractRepository implements RepositoryInterface
 
     /**
      * @param User $user
+     *
      * @return bool
      */
     public function save(User $user): bool
@@ -23,19 +25,7 @@ class UserRepository extends AbstractRepository implements RepositoryInterface
 
     /**
      * @param string $phone
-     * @return bool
-     */
-    public function phoneAlreadyUsed(string $phone): bool
-    {
-        $user = $this->repository()->findOneBy([
-            'details.phone' => $phone
-        ]);
-
-        return !is_null($user);
-    }
-
-    /**
-     * @param string $phone
+     *
      * @return User|null
      */
     public function findByPhone(string $phone): ?User
@@ -44,6 +34,19 @@ class UserRepository extends AbstractRepository implements RepositoryInterface
         $user = $this->repository()->findOneBy([
             'details.phone' => $phone
         ]);
+
+        return $user;
+    }
+
+    /**
+     * @param AggregateId $userId
+     *
+     * @return User|null
+     */
+    public function find(AggregateId $userId): ?User
+    {
+        /** @var User | null $user */
+        $user = $this->repository()->find((string)$userId);
 
         return $user;
     }
