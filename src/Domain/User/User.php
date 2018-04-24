@@ -33,22 +33,30 @@ class User
     private $wishlist;
 
     /**
+     * @var int|null
+     */
+    private $portalAccountId;
+
+    /**
      * @param AggregateId $id
      * @param Details $details
      * @param bool $isVerified
      * @param VerificationCode $verificationCode
+     * @param int|null $portalAccountId
      */
     public function __construct(
         AggregateId $id,
         Details $details,
         bool $isVerified,
-        VerificationCode $verificationCode
+        VerificationCode $verificationCode,
+        int $portalAccountId = 0
     ) {
         $this->id = $id;
         $this->details = $details;
         $this->isVerified = $isVerified;
         $this->verificationCode = $verificationCode;
         $this->wishlist = new ArrayCollection();
+        $this->portalAccountId = $portalAccountId;
     }
 
     /**
@@ -152,5 +160,22 @@ class User
                 $machineInWishlist->detachFromUser();
             }
         }
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPortalAccountId()
+    {
+        return $this->portalAccountId;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasPortalAccount(): bool
+    {
+        return ($this->portalAccountId !== null)
+            && ($this->portalAccountId !== 0);
     }
 }
