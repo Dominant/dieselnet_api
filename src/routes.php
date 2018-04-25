@@ -20,3 +20,7 @@ $app->options('/[{path:.*}]', function(ServerRequestInterface $request, Response
 
     return $response->withStatus(200);
 })->setName('options-check');
+
+# Portal
+$app->get('/user/{reference}/portal-details', WebActions\User\GetPortalDetails::class)->setName('get-portal-details');
+$app->post('/user/{reference}/portal-details', WebActions\User\PostPortalDetails::class)->setName('post-portal-details');

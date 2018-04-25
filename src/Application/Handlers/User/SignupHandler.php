@@ -12,6 +12,7 @@ use Dieselnet\Application\Response\Error;
 use Dieselnet\Application\Response\ResponseInterface;
 use Dieselnet\Application\Response\Success;
 use Dieselnet\Domain\User\Details;
+use Dieselnet\Domain\User\PortalDetails;
 use Dieselnet\Domain\User\RepositoryInterface;
 use Dieselnet\Domain\User\User;
 use Dieselnet\Domain\User\VerificationCode;
@@ -53,7 +54,8 @@ class SignupHandler implements CommandHandlerInterface
                     AggregateId::generate(),
                     new Details($command->getPhoneNumber(), $command->getDeviceId()),
                     false,
-                    VerificationCode::generate()
+                    VerificationCode::generate(),
+                    new PortalDetails()
                 );
             } else {
                 $user->changeDetails(new Details($command->getPhoneNumber(), $command->getDeviceId()));

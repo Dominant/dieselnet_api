@@ -10,3 +10,8 @@ database:
   pass: 'env(DB_PASS)'
   dbname: 'dieselnet_api'
   driver: 'pdo_mysql'
+portal:
+  infoUrl: 'http://dieselnet/en/api/get'
+  updateUrl: 'http://dieselnet/en/api/update'
+  registerUrl: 'http://dieselnet/en/api/register'
+  secret: 'env(PORTAL_SECRET)'

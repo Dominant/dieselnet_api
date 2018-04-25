@@ -10,7 +10,7 @@
         <field name="isVerified" column="is_verified" type="boolean" length="1" />
         <embedded name="details" class="Dieselnet\Domain\User\Details" use-column-prefix="false" />
         <embedded name="verificationCode" class="Dieselnet\Domain\User\VerificationCode" use-column-prefix="false" />
-        <field name="portalAccountId" column="portal_account_id" type="integer" />
+        <embedded name="portalDetails" class="Dieselnet\Domain\User\PortalDetails" use-column-prefix="false" />
 
         <one-to-many field="wishlist" mapped-by="user" target-entity="Dieselnet\Domain\User\Machine" orphan-removal="true">
             <cascade>

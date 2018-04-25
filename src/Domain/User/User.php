@@ -33,30 +33,30 @@ class User
     private $wishlist;
 
     /**
-     * @var int|null
+     * @var PortalDetails
      */
-    private $portalAccountId;
+    private $portalDetails;
 
     /**
      * @param AggregateId $id
      * @param Details $details
      * @param bool $isVerified
      * @param VerificationCode $verificationCode
-     * @param int|null $portalAccountId
+     * @param PortalDetails $portalDetails
      */
     public function __construct(
         AggregateId $id,
         Details $details,
         bool $isVerified,
         VerificationCode $verificationCode,
-        int $portalAccountId = 0
+        PortalDetails $portalDetails
     ) {
         $this->id = $id;
         $this->details = $details;
         $this->isVerified = $isVerified;
         $this->verificationCode = $verificationCode;
         $this->wishlist = new ArrayCollection();
-        $this->portalAccountId = $portalAccountId;
+        $this->portalDetails = $portalDetails;
     }
 
     /**
@@ -163,11 +163,11 @@ class User
     }
 
     /**
-     * @return int|null
+     * @return PortalDetails
      */
-    public function getPortalAccountId()
+    public function getPortalDetails()
     {
-        return $this->portalAccountId;
+        return $this->portalDetails;
     }
 
     /**
@@ -175,7 +175,21 @@ class User
      */
     public function hasPortalAccount(): bool
     {
-        return ($this->portalAccountId !== null)
-            && ($this->portalAccountId !== 0);
+        $portalDetails = $this->getPortalDetails();
+
+        if ($portalDetails === null) {
+            return false;
+        }
+
+        return ($portalDetails->getId() !== null)
+            && ($portalDetails->getId() !== 0);
+    }
+
+    /**
+     * @param PortalDetails $portalDetails
+     */
+    public function changePortalDetails(PortalDetails $portalDetails)
+    {
+        $this->portalDetails = $portalDetails;
     }
 }
