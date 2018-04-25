@@ -45,6 +45,7 @@ class GetPortalDetails extends AbstractAction
         }
 
         return $this->jsonResponse($response, new Success(
+            200,
             $userPortalDetails->toPortalRequestPayload() + [
                 'telephone' => $user->details()->phone(),
                 'type' => $user->getPortalDetails()->getType()
