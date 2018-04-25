@@ -93,7 +93,8 @@ class UserService
     {
         return [
             'telephone' => $user->details()->phone(),
-            'secret' => $this->getSecret()
+            'secret' => $this->getSecret(),
+            'account_id' => $user->getPortalDetails()->getId()
         ] + $portalDetails->toPortalRequestPayload();
     }
 
