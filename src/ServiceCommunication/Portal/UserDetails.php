@@ -45,7 +45,6 @@ class UserDetails
         string $email,
         string $address
     ) {
-        Assert::notEmpty($companyName);
         Assert::notEmpty($firstName);
         Assert::notEmpty($lastName);
         Assert::notEmpty($email);
