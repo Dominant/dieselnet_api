@@ -11,7 +11,7 @@ database:
   dbname: 'dieselnet_api'
   driver: 'pdo_mysql'
 portal:
-  infoUrl: 'http://dev.dieselnet.co.il/en/api/get'
-  updateUrl: 'http://dev.dieselnet.co.il/en/api/update'
-  registerUrl: 'http://dev.dieselnet.co.il/en/api/register'
+  infoUrl: 'http://ec2-35-180-32-118.eu-west-3.compute.amazonaws.com/en/api/get'
+  updateUrl: 'http://ec2-35-180-32-118.eu-west-3.compute.amazonaws.com/en/api/update'
+  registerUrl: 'http://ec2-35-180-32-118.eu-west-3.compute.amazonaws.com/en/api/register'
   secret: 'env(PORTAL_SECRET)'
